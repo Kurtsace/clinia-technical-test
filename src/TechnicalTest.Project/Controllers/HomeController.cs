@@ -1,5 +1,7 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TechnicalTest.Project.Infrastructure.Repositories.Interfaces;
 
 namespace TechnicalTest.Project.Controllers
 {
@@ -7,10 +9,11 @@ namespace TechnicalTest.Project.Controllers
     [Route("[controller]")]
     public class HomeController : ControllerBase
     {
+
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
-            return Ok("Hello world!");
+            return Ok("Hello World");
         }
     }
 }

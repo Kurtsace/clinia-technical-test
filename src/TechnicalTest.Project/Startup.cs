@@ -10,6 +10,8 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using TechnicalTest.Project.Infrastructure;
+using TechnicalTest.Project.Infrastructure.Repositories;
+using TechnicalTest.Project.Infrastructure.Repositories.Interfaces;
 
 namespace TechnicalTest.Project
 {
@@ -29,6 +31,9 @@ namespace TechnicalTest.Project
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 NullValueHandling = NullValueHandling.Include
             };
+
+            // Dependency injection for Repository wrapper 
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 
             services.AddControllers();
         }
