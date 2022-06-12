@@ -31,9 +31,11 @@ namespace TechnicalTest.Project.Infrastructure.Repositories
 
         // TODO
         // Get what? Come back to this later
+        // Update: A singleton object is the return type but no parameters to 
+        // define what to get, perhaps just return the first object?
         public async Task<T> GetAsync()
         {
-            return (T)_dbContext.Set<T>().AsNoTracking();
+            throw new NotImplementedException();
         }
 
         // CRUD methods 
@@ -80,12 +82,17 @@ namespace TechnicalTest.Project.Infrastructure.Repositories
             // Return json object
 
             // Will most likely need to implement this method in each Domain repo
-            // since each domain has its own specific relationships 
+            // since each domain has its own specific relationships
 
             // Will also need to find a way to return a response type of both
             // the entity and the related objects as a list perhaps (?)
 
             // Do research and come back to this later
+
+            // Update: Using LINQ queries to grab nested relationships using .Include,
+            // still unable to determine how to return both the entity and the nested
+            // queries as a single response or what to change this funcs return type to,
+            // perhaps a custom DTO or custom JSON response
 
             throw new NotImplementedException();
         }
