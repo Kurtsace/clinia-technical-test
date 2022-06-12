@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using TechnicalTest.Project.Domain;
 using TechnicalTest.Project.Infrastructure.Repositories.Interfaces;
+using TechnicalTest.Project.Pagination;
 
 
 // Repository base class for DB operations 
@@ -54,6 +56,51 @@ namespace TechnicalTest.Project.Infrastructure.Repositories
             var result = await UpdateAsync(entity);
 
             return result;
+        }
+
+
+        // LINQ extensions
+
+        // Get a count of entities based on a filter
+        public async Task<int> CountByExprAsync(Expression<Func<T, bool>> filter)
+        {
+            // Get enumerable list of items as per filter
+            var items = _dbContext.Set<T>().Where(filter);
+
+            return items.Count();
+        }
+
+        // Get an entity and all of its relationships
+        public async Task<T> GetEntityAndRelationsAsync(Expression<Func<T, bool>> filter)
+        {
+
+            // TODO
+            // Get entity as per filter
+            // Grab related objects
+            // Return json object
+
+            // Will most likely need to implement this method in each Domain repo
+            // since each domain has its own specific relationships 
+
+            // Will also need to find a way to return a response type of both
+            // the entity and the related objects as a list perhaps (?)
+
+            // Do research and come back to this later
+
+            throw new NotImplementedException();
+        }
+
+        // Get a list of entities paginated
+        public async Task<IEnumerable<T>> GetEntityListPaginatedAsync(Expression<Func<T, bool>> filter, PaginationModel @params)
+        {
+
+            // Get entity list as per filter and then perform pagination 
+            var entityList = await _dbContext.Set<T>().Where(filter)
+                            .Skip((@params.Page - 1) * @params.PageSize)
+                            .Take(@params.PageSize)
+                            .ToListAsync();
+
+            return entityList;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using TechnicalTest.Project.Domain;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using TechnicalTest.Project.Domain;
 
 namespace TechnicalTest.Project.Infrastructure.Repositories.Interfaces
 {

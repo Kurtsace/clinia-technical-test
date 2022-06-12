@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using TechnicalTest.Project.Pagination;
 
 namespace TechnicalTest.Project.Infrastructure.Repositories.Interfaces
 {
@@ -19,5 +20,11 @@ namespace TechnicalTest.Project.Infrastructure.Repositories.Interfaces
         Task<T> UpdateAsync(T entity);
 
         void Delete(T entity);
+
+
+        // LINQ extension methods 
+        Task<T> GetEntityAndRelationsAsync(Expression<Func<T, bool>> filter);
+        Task<IEnumerable<T>> GetEntityListPaginatedAsync(Expression<Func<T, bool>> filter, PaginationModel pg);
+        Task<int> CountByExprAsync(Expression<Func<T, bool>> filter);
     }
 }
