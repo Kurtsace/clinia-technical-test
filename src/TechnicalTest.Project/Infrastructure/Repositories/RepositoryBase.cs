@@ -39,9 +39,11 @@ namespace TechnicalTest.Project.Infrastructure.Repositories
         }
 
         // CRUD methods 
+        // Create
         public async Task<T> CreateAsync(T entity)
         {
             await _dbContext.Set<T>().AddAsync(entity);
+            _dbContext.SaveChanges();
 
             return entity;
         }
@@ -50,12 +52,14 @@ namespace TechnicalTest.Project.Infrastructure.Repositories
         public void Delete(T entity)
         {
             _dbContext.Set<T>().Remove(entity);
+            _dbContext.SaveChanges();
         }
 
         // Update the entity 
         public async Task<T> UpdateAsync(T entity)
         {
             var result = await UpdateAsync(entity);
+            _dbContext.SaveChanges();
 
             return result;
         }

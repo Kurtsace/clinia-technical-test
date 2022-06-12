@@ -10,11 +10,15 @@ namespace TechnicalTest.Project.Infrastructure.Repositories
     {
 
         private readonly TestDbContext _context;
+
+        // Domain repos
         private IHealthFacilityRepository? healthFacilityRepository;
         private IHealthFacilityServiceRepository? healthFacilityServiceRepository;
         private IPractitionerRepository? practitionerRepository;
         private IPractitionerServiceRepository? practitionerServiceRepository;
         private IServiceRepository? serviceRepository;
+        private IPaymentModalityRepository? paymentModalityRepository;
+        private ITreatmentModalityRepository? treatmentModalityRepository;
 
         public RepositoryWrapper(TestDbContext context)
         {
@@ -82,6 +86,32 @@ namespace TechnicalTest.Project.Infrastructure.Repositories
                 }
 
                 return serviceRepository;
+            }
+        }
+
+        public ITreatmentModalityRepository TreatmentModalityRepository
+        {
+            get
+            {
+                if (treatmentModalityRepository == null)
+                {
+                    treatmentModalityRepository = new TreatmentModalityRepository(_context);
+                }
+
+                return treatmentModalityRepository;
+            }
+        }
+
+        public IPaymentModalityRepository PaymentModalityRepository
+        {
+            get
+            {
+                if (paymentModalityRepository == null)
+                {
+                    paymentModalityRepository = new PaymentModalityRepository(_context);
+                }
+
+                return paymentModalityRepository;
             }
         }
 

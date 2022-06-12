@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using TechnicalTest.Project.Domain;
+using TechnicalTest.Project.Domain.Modalities;
+using TechnicalTest.Project.Stores;
 
 namespace TechnicalTest.Project.Infrastructure
 {
@@ -7,7 +10,6 @@ namespace TechnicalTest.Project.Infrastructure
     {
         public TestDbContext(DbContextOptions<TestDbContext> options) : base(options)
         {
-            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
