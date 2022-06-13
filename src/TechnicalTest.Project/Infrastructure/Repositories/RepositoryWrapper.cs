@@ -37,7 +37,7 @@ namespace TechnicalTest.Project.Infrastructure.Repositories
                 return healthFacilityRepository;
             }   
         }
-        public IHealthFacilityServiceRepository HealthFacilityService
+        public IHealthFacilityServiceRepository HealthFacilityServiceRepository
         {
             get
             {
@@ -63,7 +63,7 @@ namespace TechnicalTest.Project.Infrastructure.Repositories
             }
         }
 
-        public IPractitionerServiceRepository PractitionerService
+        public IPractitionerServiceRepository PractitionerServiceRepository
         {
             get
             {

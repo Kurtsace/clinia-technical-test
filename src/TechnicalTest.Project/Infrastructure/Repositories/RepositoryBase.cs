@@ -58,10 +58,11 @@ namespace TechnicalTest.Project.Infrastructure.Repositories
         // Update the entity 
         public async Task<T> UpdateAsync(T entity)
         {
-            var result = await UpdateAsync(entity);
+
+            _dbContext.Set<T>().Update(entity);
             _dbContext.SaveChanges();
 
-            return result;
+            return entity;
         }
 
 

@@ -7,10 +7,12 @@ namespace TechnicalTest.Project.Infrastructure.Repositories.Interfaces
 
         // Repositories for models 
         IHealthFacilityRepository HealthFacilityRepository { get; }
-        IHealthFacilityServiceRepository HealthFacilityService { get; }
+        IHealthFacilityServiceRepository HealthFacilityServiceRepository { get; }
         IPractitionerRepository PractitionerRepository { get; }
-        IPractitionerServiceRepository PractitionerService { get; }
-        IServiceRepository ServiceRepository { get; }   
+        IPractitionerServiceRepository PractitionerServiceRepository { get; }
+        IServiceRepository ServiceRepository { get; }
+        IPaymentModalityRepository PaymentModalityRepository { get; }
+        ITreatmentModalityRepository TreatmentModalityRepository { get; }
         void Save();
 
     }
